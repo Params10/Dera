@@ -99,7 +99,7 @@ contract treasury {
             uint256 allocationAmount = (amount *
                 protocolAllocations[protocolAddresses[i]]
                     .allocationPercentage) / 100;
-            if (protocolAllocations[protocolAddresses[i]].isLiquidityPool) {
+            if (protocolAllocations[protocolAddresses[i]].isLiquidityPool && tokenAddress != usdc) {
                 IERC20(usdc).approve(address(uniswapRouter), allocationAmount);
                 address[] memory path = new address[](2);
                 path[0] = tokenAddress;
