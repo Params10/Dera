@@ -164,7 +164,10 @@ contract treasury {
         uint256 protocolYieldPercentage = (tempYield * 100) / getTotalYield();
         return protocolYieldPercentage;
     }
-
+   
+    function withdraw(uint256 amount, address tokenAddress) external onlyOwner{
+        IERC20(tokenAddress).transfer(owner, amount);
+    } 
     function validateAllocation(
         uint256 allocation
     ) private view returns (bool) {
